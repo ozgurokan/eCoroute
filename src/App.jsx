@@ -1,22 +1,21 @@
-import './App.css'
-import {
-Flex,
-Box,
-Button,
 
-} from "@chakra-ui/react"
-
+import {Routes, Route} from "react-router-dom"
 import Navbar from "./components/navbar/Navbar"
-import {CaptionCarousel} from "./components/carousel/Carousel"
+import Footer from "./components/footer/Footer"
+
+// page imports
+import Home from "./pages/Home"
 
 function App() {
 
   return (
     <>
     <Navbar/>
-    <Flex h={"200vh"} w={"full"}>
-      <CaptionCarousel/>
-    </Flex>
+      <Routes>
+        <Route index path="/" element={<Home/>} />
+      </Routes>
+    <Footer/>
+    
     </>
   )
 }

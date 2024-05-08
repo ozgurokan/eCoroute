@@ -1,33 +1,22 @@
 import { useState, useEffect } from 'react';
 import {
-  Box,
   Flex,
-  Avatar,
   HStack,
-  Link,
-  IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
-  Stack,
 } from '@chakra-ui/react';
+import {Link} from "react-router-dom";
 
 
 export default function Navbar() {
     const [scrollY, setScrollY] = useState(0);
 
     const buttonsLeft = [
-        { id: 0, text: "Company" },
-        { id: 1, text: "Partners" },
-        { id: 2, text: "About" },
+        { id: 0, text: "Company" ,path : "/company"},
+        { id: 1, text: "Partners", path : "/partners" },
+        { id: 2, text: "About",path : "/about" },
     ]
     const buttonsRight = [
-        { id: 3, text: "Get A Route" },
+        { id: 3, text: "Get A Route", path : "/getRoute" },
     ]
 
     useEffect(() => {
@@ -58,32 +47,42 @@ export default function Navbar() {
                 zIndex="999"
                 height={"8em"}
                 transition="background-color 0.3s ease"
+                borderBottom={"1px solid white"}
             >
                 <HStack ml="10%" spacing="3%">
                     {buttonsLeft.map((item) => (
-                        <Button
+                        <Link to={item.path}>
+                            <Button
                             key={item.id}
                             size="md"
                             colorScheme="teal"
                             variant="ghost"
                             color={"whitesmoke"}
+                            _hover={{ color: scrollY < 200 ? "black" : "green" }}
                             // hover eklenebilir - siyaha dönsün yazılar
                         >
                             {item.text}
                         </Button>
+                        </Link>
+                        
                     ))}
                 </HStack>
                 <HStack mr="10%" spacing="3%">
                     {buttonsRight.map((item) => (
-                        <Button
+                        <Link to={item.path}>
+                            <Button
                             key={item.id}
                             size="md"
                             variant="outline"
                             color={"whitesmoke"}
+                            _hover={{ color: scrollY < 200 ? "black" : "green" }}
                             // hover eklenebilir - siyaha dönsün yazılar
                         >
                             {item.text}
                         </Button>
+                        </Link>
+                        
+                        
                     ))}
                 </HStack>
             </Flex>
