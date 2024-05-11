@@ -31,7 +31,7 @@ export default function Navbar() {
         };
       }, []);
     
-      const navbarColor = scrollY > 200 ? "gray.800" : "green.800"; // Change color based on scroll position
+      const navbarColor = scrollY > 150 ? "gray.800" : "green.800"; // Change color based on scroll position
 
     return (
         <>
@@ -51,15 +51,13 @@ export default function Navbar() {
             >
                 <HStack ml="10%" spacing="3%">
                     {buttonsLeft.map((item) => (
-                        <Link to={item.path}>
+                        <Link to={item.path} key={item.id}>
                             <Button
-                            key={item.id}
                             size="md"
                             colorScheme="teal"
                             variant="ghost"
                             color={"whitesmoke"}
                             _hover={{ color: scrollY < 200 ? "black" : "green" }}
-                            // hover eklenebilir - siyaha dönsün yazılar
                         >
                             {item.text}
                         </Button>
@@ -69,14 +67,12 @@ export default function Navbar() {
                 </HStack>
                 <HStack mr="10%" spacing="3%">
                     {buttonsRight.map((item) => (
-                        <Link to={item.path}>
+                        <Link to={item.path} key={item.id} >
                             <Button
-                            key={item.id}
                             size="md"
                             variant="outline"
                             color={"whitesmoke"}
                             _hover={{ color: scrollY < 200 ? "black" : "green" }}
-                            // hover eklenebilir - siyaha dönsün yazılar
                         >
                             {item.text}
                         </Button>

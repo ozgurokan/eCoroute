@@ -5,6 +5,7 @@ import Footer from "./components/footer/Footer"
 
 // page imports
 import Home from "./pages/Home"
+import GetRoute from "./pages/GetRoute"
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <Navbar/>
       <Routes>
         <Route index path="/" element={<Home/>} />
+        <Route path="/getRoute" element={<GetRoute/>} />
       </Routes>
     <Footer/>
     
